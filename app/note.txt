@@ -1,0 +1,24 @@
+docker build -t <tag-name> .
+docker run -dp <port>:<port> <tag-name>
+docker tag <tag-name> <user-name>/<tag-name>
+docker image ls
+docker login -u <user-name>
+docker push <user-name>/<tag-name>
+docker exec <container-id> <command>
+docker volume create <volume-name>
+docker run -dp <port>:<port> -v <volume-name>:<path-in-container> <tag-name>
+docker volume inspect <container-id>
+docker run -dp 3000:3000 -w /app -v "$(pwd):/app" node:12-alpine sh -c "yarn install && yarn run dev"
+docker logs -f <container-id>
+docker network create <network-name>
+docker run -d --network <network-name> --network-alias mysql -v <volume-name>:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=todos mysql:5.7
+docker exec -it <container-id> mysql -p
+docker run -it --network <tag-name> nicolaka/netshoot
+dig mysql
+docker run -dp 3000:3000 -w /app -v "$(pwd):/app" --network todo-app -e MYSQL_HOST=mysql -e MYSQL_USER=root -e MYSQL_PASSWORD=secret -e MYSQL_DB=todos node:12-alpine sh -c "yarn install && yarn run dev"
+docker exec -it <mysql-container-id> mysql -p <database-name>
+docker-compose up -d
+docker-compose logs -f
+docker-compose logs -f app
+docker-compose down
+docker scan <image-name>
